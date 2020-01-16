@@ -26,7 +26,13 @@ def draw():
 
 
 def beat(): #otbit
-    pass
+    global v_x, v_y
+    if (pos[0] - pos_shaiba[0]) ** 2 + (pos[1] - pos_shaiba[1]) ** 2 <= 40 ** 2:
+        v_x = (-pos[0] + pos_shaiba[0]) // 5
+        v_y = (-pos[1] + pos_shaiba[1]) // 5
+    if (pos_vrag[0] - pos_shaiba[0]) ** 2 + (pos_vrag[1] - pos_shaiba[1]) ** 2 <= 40 ** 2:
+        v_x = (-pos_vrag[0] + pos_shaiba[0]) // 5
+        v_y = (-pos_vrag[1] + pos_shaiba[1]) // 5
 
 
 def border(): #kraya
