@@ -3,8 +3,41 @@ import pygame
 pygame.init()
 size = width, height = 1100, 700
 screen = pygame.display.set_mode(size)
+pos = (400, 350 + 175)
+pos_vrag = (400, 175)
+pos_shaiba = (400, 350)
+x = 0
+v_x = 0
+v_y = 0
+
+schet_igr = 0
+schet_comp = 0
+
 
 def draw():
+    # screen.fill((204, 202, 202))  # светлая тема
+    screen.fill((57, 57, 57))  # темная тема
+    pygame.draw.rect(screen, pygame.Color(87, 87, 87), (150, 0, 500, 700), 0)
+    # pygame.draw.rect(screen, pygame.Color(230, 230, 230), (150, 0, 500, 700), 0)
+    pygame.draw.rect(screen, pygame.Color(147, 147, 147), (150, 340, 500, 20), 0)
+    pygame.draw.circle(screen, (147, 147, 147), (400, 350), 64)
+    pygame.draw.rect(screen, pygame.Color(255, 13, 0), (300, 680, 200, 20), 0)
+    pygame.draw.rect(screen, pygame.Color(51, 61, 255), (300, 0, 200, 20), 0)
+
+
+def beat(): #otbit
+    pass
+
+
+def border(): #kraya
+    pass
+
+
+def gate(): #vorota
+    pass
+
+
+def returning(): #vozvrat
     pass
 
 
@@ -16,7 +49,30 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if event.type == pygame.KEYDOWN:
+            returning()
     draw()
+    if pygame.mouse.get_focused():
+        if pygame.mouse.get_pos()[0] in range(150 + 20, 150 + 500 - 20) and pygame.mouse.get_pos()[1] in \
+                range(350 + 20, 700 - 20):
+            pos = pygame.mouse.get_pos()
+            pygame.mouse.set_visible(False)
+        else:
+            pygame.mouse.set_visible(True)
+    pygame.draw.circle(screen, (255, 61, 51), pos, 20)
+    pygame.draw.circle(screen, (255, 13, 0), pos, 10)
+    pygame.draw.circle(screen, (51, 61, 255), pos_vrag, 20)
+    pygame.draw.circle(screen, (0, 13, 255), pos_vrag, 10)
+    beat()
+    border()
+    gate()
+    pos_shaiba = (pos_shaiba[0] + v_x, pos_shaiba[1] + v_y)
+    if pos_shaiba[0] > pos_vrag[0]:
+        pos_vrag = (pos_vrag[0] + abs(v_x) // 3 * 2, pos_vrag[1])
+    elif pos_shaiba[0] < pos_vrag[0]:
+        pos_vrag = (pos_vrag[0] - abs(v_x) // 3 * 2, pos_vrag[1])
+    # pos_vrag = (pos_vrag[0] + v_x // 3, pos_vrag[1])
+    pygame.draw.circle(screen, (255, 255, 0), pos_shaiba, 20)
 
     pygame.display.flip()
     clock.tick(24)
