@@ -36,15 +36,31 @@ def beat(): #otbit
 
 
 def border(): #kraya
-    pass
+    global v_y, v_x
+    if pos_shaiba[0] - 20 <= 150 or pos_shaiba[0] + 20 >= 150 + 500:
+        v_x *= -1
+    if pos_shaiba[1] - 20 <= 0 or pos_shaiba[1] + 20 >= 700:
+        v_y *= -1
 
 
 def gate(): #vorota
-    pass
+    global schet_comp, schet_igr
+    if pos_shaiba[1] - 20 in range(20) or pos_shaiba[1] + 20 in range(680, 700):
+        if pos_shaiba[0] in range(150 + 100, 150 + 300):
+            if pos_shaiba[1] - 20 in range(20):
+                schet_igr += 1
+            else:
+                schet_comp += 1
+            returning()
 
 
 def returning(): #vozvrat
-    pass
+    global pos, pos_vrag, pos_shaiba, v_y, v_x
+    pos = (400, int(350 * 1.5))
+    pos_shaiba = (400, 350)
+    pos_vrag = (400, 175)
+    v_x = v_y = 0
+    print(schet_igr, schet_comp)
 
 
 draw()
