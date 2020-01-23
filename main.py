@@ -39,11 +39,6 @@ def border(): #kraya
     pass
 
 
-def gate(): #vorota
-    pass
-
-
-
 draw()
 pygame.display.flip()
 running = True
