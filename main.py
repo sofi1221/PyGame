@@ -9,6 +9,7 @@ pos_shaiba = (400, 350)
 x = 0
 v_x = 0
 v_y = 0
+prepos = 0
 
 schet_igr = 0
 schet_comp = 0
