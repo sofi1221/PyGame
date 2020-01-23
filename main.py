@@ -43,9 +43,6 @@ def gate(): #vorota
     pass
 
 
-def returning(): #vozvrat
-    pass
-
 
 draw()
 pygame.display.flip()
